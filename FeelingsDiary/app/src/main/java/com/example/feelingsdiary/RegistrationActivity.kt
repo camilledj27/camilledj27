@@ -28,7 +28,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDatabaseReference: DatabaseReference
-    private var mDatabase: FirebaseDatabase? = null
+    private lateinit var mDatabase: FirebaseDatabase
 
     private val TAG = "CreateAccountActivity"
     //global variables
@@ -49,7 +49,8 @@ class RegistrationActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
 
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference!!.child("Users")
+        mDatabaseReference = mDatabase.getReference("Users")
+        mDatabaseReference.setValue("test")
         mAuth = FirebaseAuth.getInstance()
 
         regBtn!!.setOnClickListener { registerNewUser() }
@@ -87,17 +88,28 @@ class RegistrationActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(applicationContext, "Registration successful!", Toast.LENGTH_LONG).show()
-                    progressBar!!.visibility = View.GONE
+                   // progressBar!!.visibility = View.GONE
                     Log.d(TAG, "createUserWithEmail:success")
                     val userId = mAuth!!.currentUser!!.uid
-
+                    try {
+                        throw IllegalStateException()
+                        println("Hello World")
+                    } catch (exc: Throwable) {
+                        println("Something went wrong")
+                    }
                     //Write verify email method
 
                     //update user profile information
                      val currentUserDb = mDatabaseReference!!.child(userId)
+                    Log.i(TAG, "test1")
+                    currentUserDb.child("firstName").push()
+                    Log.i(TAG, firstName)
                     currentUserDb.child("firstName").setValue(firstName)
+
                     currentUserDb.child("lastName").setValue(lastName)
+                    Log.i(TAG, lastName)
                     currentUserDb.child("bday").setValue(bday)
+                    Log.i(TAG, bday)
 
                     val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
                     startActivity(intent)
@@ -108,5 +120,5 @@ class RegistrationActivity : AppCompatActivity() {
             }
     }
 
-    
+
 }
