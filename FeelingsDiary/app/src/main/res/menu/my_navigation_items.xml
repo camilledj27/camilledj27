@@ -9,4 +9,7 @@
     <item android:id="@+id/calendar"
         android:title="@string/action_calendar"
         android:icon="@drawable/ic_cal" />
+    <item android:id="@+id/diary"
+        android:title="@string/action_diary"
+        android:icon="@drawable/ic_diary" />
 </menu>

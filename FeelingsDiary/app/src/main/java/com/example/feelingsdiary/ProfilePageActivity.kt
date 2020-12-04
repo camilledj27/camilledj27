@@ -209,6 +209,9 @@ class ProfilePageActivity : AppCompatActivity() {
             R.id.calendar -> {
                 Toast.makeText(getApplicationContext(), "Calendar", Toast.LENGTH_SHORT).show();
             }
+            R.id.diary -> {
+                Toast.makeText(getApplicationContext(), "Diary", Toast.LENGTH_SHORT).show();
+            }
             else -> {
                 null
             }
