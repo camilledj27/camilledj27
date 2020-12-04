@@ -1,0 +1,6 @@
+CMSC Group 14 - Feelings Diary Resources
+https://developer.android.com/guide/navigation/navigation-getting-started
+https://medium.com/@bariskarapinar/firebase-authentication-android-app-sign-in-sign-up-create-profile-c20d185bbbaf
+https://codinginflow.com/tutorials/android/bottomnavigationview
+Lab 2 - Intents
+Lab 7 - Firebase
