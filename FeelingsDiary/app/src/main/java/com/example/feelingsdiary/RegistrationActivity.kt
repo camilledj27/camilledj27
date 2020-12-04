@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -53,8 +56,11 @@ class RegistrationActivity : AppCompatActivity() {
         mDatabaseReference.setValue("test")
         mAuth = FirebaseAuth.getInstance()
 
+
         regBtn!!.setOnClickListener { registerNewUser() }
     }
+
+
 
     private fun registerNewUser() {
         progressBar!!.visibility = View.VISIBLE
@@ -100,7 +106,9 @@ class RegistrationActivity : AppCompatActivity() {
                     //Write verify email method
 
                     //update user profile information
-                     val currentUserDb = mDatabaseReference!!.child(userId)
+                     //val currentUserDb = mDatabaseReference!!.child(userId)
+                    val id = mDatabaseReference.push().key
+                    val currentUserDb = mDatabaseReference.child(id!!)
                     Log.i(TAG, "test1")
                     currentUserDb.child("firstName").push()
                     Log.i(TAG, firstName)
@@ -118,6 +126,14 @@ class RegistrationActivity : AppCompatActivity() {
                     progressBar!!.visibility = View.GONE
                 }
             }
+    }
+
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // if the user tapped the more information item, show the more info dialog
+        return super.onOptionsItemSelected(item);
     }
 
 

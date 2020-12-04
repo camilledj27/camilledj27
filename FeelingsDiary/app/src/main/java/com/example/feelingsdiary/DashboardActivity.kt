@@ -1,4 +1,6 @@
 package com.example.feelingsdiary
 
-class DashboardActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class DashboardActivity : AppCompatActivity(){
 }
