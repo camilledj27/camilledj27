@@ -104,7 +104,11 @@ class DashboardActivity : AppCompatActivity(){
                 Toast.makeText(getApplicationContext(), "Profile", Toast.LENGTH_SHORT).show();
             }
             R.id.calendar -> {
+<<<<<<< HEAD
                 val intent = Intent(this, CalendarActivity::class.java)
+=======
+                val intent = Intent(this, CalendarActivity::class.java )
+>>>>>>> b6ea66a91c41a59b2da18e0469887547cd3d3143
                 startActivity(intent)
                 Toast.makeText(getApplicationContext(), "Calendar", Toast.LENGTH_SHORT).show();
             }

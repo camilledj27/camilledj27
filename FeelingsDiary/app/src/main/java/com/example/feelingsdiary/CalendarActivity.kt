@@ -19,12 +19,13 @@ class CalendarActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Setting Calendar as the view
         setContentView(R.layout.activity_calendar)
 
         calender = findViewById<View>(R.id.calender) as CalendarView
         date = findViewById<View>(R.id.date_view) as TextView
 
-        // Source: http://developer.android.com/training/improving-layouts/smooth-scrolling.html
+        // Source: https://www.geeksforgeeks.org/android-creating-a-calendar-view-app/
         calender!!.setOnDateChangeListener(
             OnDateChangeListener { view, year, month, dayOfMonth ->
                 val m = month + 1;
@@ -34,12 +35,13 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     // source: https://www.tutorialspoint.com/how-to-add-calendar-events-in-android-app
+    // Adding events to the calendar using Google Calendar
     fun AddCalendarEvent(view: View?) {
-        val calendarEvent = Calendar.getInstance()
+        val event = Calendar.getInstance()
         val i = Intent(Intent.ACTION_EDIT)
         i.type = "vnd.android.cursor.item/event"
-        i.putExtra("startTime", calendarEvent.timeInMillis)
-        i.putExtra("endTime", calendarEvent.timeInMillis + 60 * 60 * 1000)
+        i.putExtra("startTime", event.timeInMillis)
+        i.putExtra("endTime", event.timeInMillis + 60 * 60 * 1000)
         i.putExtra("eventName", "Calendar Event")
         startActivity(i)
     }
