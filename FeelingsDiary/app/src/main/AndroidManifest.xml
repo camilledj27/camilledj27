@@ -20,6 +20,8 @@
         <activity android:name="com.example.feelingsdiary.RegistrationActivity" />
         <activity android:name="com.example.feelingsdiary.ProfilePageActivity" />
         <activity android:name="com.example.feelingsdiary.DashboardActivity" />
+        <activity android:name="com.example.feelingsdiary.DiaryActivity" />
+
     </application>
 
 </manifest>

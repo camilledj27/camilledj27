@@ -25,6 +25,9 @@
     <string name="action_settings">Settings</string>
     <string name="action_calendar">Calendar</string>
     <string name="action_diary">Diary</string>
+    <string name="upload">Upload</string>
+    <string name="add_entry">Add Entry</string>
+    <string name="view_entries">View Entries</string>
     <string name="logout">Log Out</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -210,6 +210,8 @@ class ProfilePageActivity : AppCompatActivity() {
                 Toast.makeText(getApplicationContext(), "Calendar", Toast.LENGTH_SHORT).show();
             }
             R.id.diary -> {
+                val intent = Intent(this,DashboardActivity::class.java )
+                startActivity(intent)
                 Toast.makeText(getApplicationContext(), "Diary", Toast.LENGTH_SHORT).show();
             }
             else -> {
