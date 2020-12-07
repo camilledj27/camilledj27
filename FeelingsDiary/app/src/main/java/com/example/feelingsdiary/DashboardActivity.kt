@@ -81,6 +81,7 @@ class DashboardActivity : AppCompatActivity(){
             loadFragment(item.itemId)
             true
         }
+
     private fun loadFragment(itemId: Int) {
         val tag = itemId.toString()
         var fragment = supportFragmentManager.findFragmentByTag(tag) ?: when (itemId) {

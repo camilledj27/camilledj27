@@ -48,8 +48,18 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="570dp"
-        android:text="Pressing the button will launch the Google Calendar application on your phone"
+        android:text="Pressing the button will launch the Google Calendar application on your device"
         android:textColor="#FFFFFF"
          />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="#D7C9F3"
+        app:menu="@menu/my_navigation_items" />
+
+
 
 </RelativeLayout>
