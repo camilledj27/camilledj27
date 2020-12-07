@@ -22,14 +22,16 @@ class CalendarActivity : AppCompatActivity() {
         calender = findViewById<View>(R.id.calender) as CalendarView
         date_view = findViewById<View>(R.id.date_view) as TextView
 
+        // Source: http://developer.android.com/training/improving-layouts/smooth-scrolling.html
         calender!!.setOnDateChangeListener(
             OnDateChangeListener { view, year, month, dayOfMonth ->
                 val m = month + 1;
-                val Date = ( dayOfMonth.toString() + "-" + m + "-" + year)
-                date_view!!.text = Date
+                val date = ( dayOfMonth.toString() + "-" + m + "-" + year)
+                date_view!!.text = date
             })
     }
 
+    // source: https://www.tutorialspoint.com/how-to-add-calendar-events-in-android-app
     fun AddCalendarEvent(view: View?) {
         val calendarEvent = Calendar.getInstance()
         val i = Intent(Intent.ACTION_EDIT)
