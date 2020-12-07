@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity(){
                 if (task.isSuccessful) {
                     Toast.makeText(applicationContext, "Login successful!", Toast.LENGTH_LONG)
                         .show()
-                    val intent = Intent(this@LoginActivity, ProfilePageActivity::class.java)
+                    val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
                     //intent.putExtra(email, mDatabaseReference?.key)
                     intent.putExtra("user_email",userEmail?.text.toString())
                     startActivity(intent)
