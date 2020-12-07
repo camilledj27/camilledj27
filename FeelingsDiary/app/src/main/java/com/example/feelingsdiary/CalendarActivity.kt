@@ -32,6 +32,10 @@ class CalendarActivity : AppCompatActivity() {
                 val dateS = ( dayOfMonth.toString() + "-" + m + "-" + year)
                 date!!.text = dateS
             })
+        // Source: https://codinginflow.com/tutorials/android/bottomnavigationview
+        val bottomNav =
+            findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
     }
 
     // source: https://www.tutorialspoint.com/how-to-add-calendar-events-in-android-app
@@ -56,9 +60,6 @@ class CalendarActivity : AppCompatActivity() {
     private fun loadFragment(itemId: Int) {
         val tag = itemId.toString()
         var fragment = supportFragmentManager.findFragmentByTag(tag) ?: when (itemId) {
-            R.id.home -> {
-                Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
-            }
             R.id.profile -> {
                 val intent = Intent(this, ProfilePageActivity::class.java)
                 startActivity(intent)

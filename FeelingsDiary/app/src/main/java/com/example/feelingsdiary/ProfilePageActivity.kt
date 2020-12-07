@@ -46,7 +46,6 @@ class ProfilePageActivity : AppCompatActivity() {
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase.getReference("Users")
 
-        //mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         mProfileFirstName = findViewById(R.id.profile_first_name);
         mProfileLastName = findViewById(R.id.profile_last_name);
         mProfileEmail = findViewById(R.id.profile_email);
@@ -58,6 +57,7 @@ class ProfilePageActivity : AppCompatActivity() {
 
         profileImageView = findViewById(R.id.profile_pic_imageView);
 
+        //Clickable profile image, Google Photos chooser
         profileImageView?.setOnClickListener{
 
                 val profileIntent = Intent()
@@ -73,13 +73,14 @@ class ProfilePageActivity : AppCompatActivity() {
         val intent = intent
 
         mProfileEmail?.text = intent.getStringExtra("user_email").toString()
-
+        //Source: https://codinginflow.com/tutorials/android/bottomnavigationview
         val bottomNav =
             findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
     }
 
+    //Sets chosen image
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode === PICK_IMAGE && resultCode === Activity.RESULT_OK && data?.getData() != null) {
             imagePath = data?.getData()
@@ -94,6 +95,7 @@ class ProfilePageActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    //Code referenced from: https://medium.com/@bariskarapinar/firebase-authentication-android-app-sign-in-sign-up-create-profile-c20d185bbbaf
     fun EditFirstName(view: View?) {
         val inflater = layoutInflater
         val alertLayout: View =
@@ -101,9 +103,9 @@ class ProfilePageActivity : AppCompatActivity() {
         val etUsername = alertLayout.findViewById<EditText>(R.id.et_username)
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
         alert.setTitle("Edit First Name")
-        // this is set the view from XML inside AlertDialog
+
         alert.setView(alertLayout)
-        // disallow cancel of AlertDialog on click of back button and outside touch
+
         alert.setCancelable(false)
         alert.setNegativeButton("Cancel",
             DialogInterface.OnClickListener { dialog, which -> })
@@ -113,16 +115,14 @@ class ProfilePageActivity : AppCompatActivity() {
                 val lastname: String = profile_last_name.getText().toString()
                 val bday: String = profile_bday.getText().toString()
                 mProfileFirstName?.text = etUsername.text.toString()
-//                val userinformation = User(name, lastname, bday)
-//                val user: FirebaseUser = firebaseAuth.getCurrentUser()
-//                databaseReference.child(user.uid).setValue(userinformation)
-//                databaseReference.child(user.uid).setValue(userinformation)
+
                 etUsername.onEditorAction(EditorInfo.IME_ACTION_DONE)
             })
         val dialog: AlertDialog = alert.create()
         dialog.show()
     }
 
+    //Code referenced from: https://medium.com/@bariskarapinar/firebase-authentication-android-app-sign-in-sign-up-create-profile-c20d185bbbaf
     fun EditLastName(view: View?) {
         val inflater = layoutInflater
         val alertLayout: View =
@@ -130,9 +130,9 @@ class ProfilePageActivity : AppCompatActivity() {
         val etUsername = alertLayout.findViewById<EditText>(R.id.et_username)
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
         alert.setTitle("Edit Last Name")
-        // this is set the view from XML inside AlertDialog
+
         alert.setView(alertLayout)
-        // disallow cancel of AlertDialog on click of back button and outside touch
+
         alert.setCancelable(false)
         alert.setNegativeButton("Cancel",
             DialogInterface.OnClickListener { dialog, which -> })
@@ -142,16 +142,14 @@ class ProfilePageActivity : AppCompatActivity() {
                 val lastname: String = profile_last_name.getText().toString()
                 val bday: String = profile_bday.getText().toString()
                 mProfileLastName?.text = etUsername.text.toString()
-//                val userinformation = User(name, lastname, bday)
-//                val user: FirebaseUser = firebaseAuth.getCurrentUser()
-//                databaseReference.child(user.uid).setValue(userinformation)
-//                databaseReference.child(user.uid).setValue(userinformation)
+
                 etUsername.onEditorAction(EditorInfo.IME_ACTION_DONE)
             })
         val dialog: AlertDialog = alert.create()
         dialog.show()
     }
 
+    //Code referenced from: https://medium.com/@bariskarapinar/firebase-authentication-android-app-sign-in-sign-up-create-profile-c20d185bbbaf
     fun EditBday(view: View?) {
         val inflater = layoutInflater
         val alertLayout: View =
@@ -159,9 +157,9 @@ class ProfilePageActivity : AppCompatActivity() {
         val etUsername = alertLayout.findViewById<EditText>(R.id.et_username)
         val alert: AlertDialog.Builder = AlertDialog.Builder(this)
         alert.setTitle("Edit Birthday")
-        // this is set the view from XML inside AlertDialog
+
         alert.setView(alertLayout)
-        // disallow cancel of AlertDialog on click of back button and outside touch
+
         alert.setCancelable(false)
         alert.setNegativeButton("Cancel",
             DialogInterface.OnClickListener { dialog, which -> })
@@ -171,16 +169,14 @@ class ProfilePageActivity : AppCompatActivity() {
                 val lastname: String = profile_last_name.getText().toString()
                 val bday: String = profile_bday.getText().toString()
                 mProfileBday?.text = etUsername.text.toString()
-//                val userinformation = User(name, lastname, bday)
-//                val user: FirebaseUser = firebaseAuth.getCurrentUser()
-//                databaseReference.child(user.uid).setValue(userinformation)
-//                databaseReference.child(user.uid).setValue(userinformation)
+
                 etUsername.onEditorAction(EditorInfo.IME_ACTION_DONE)
             })
         val dialog: AlertDialog = alert.create()
         dialog.show()
     }
 
+    //Log Out returns to homescreen
     fun LogOut(v: View?) {
         FirebaseAuth.getInstance().signOut()
         val intent = Intent(this, MainActivity::class.java)
@@ -188,6 +184,7 @@ class ProfilePageActivity : AppCompatActivity() {
     }
 
 
+    //Bottom Navivation Bar
     private val onNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
 
@@ -198,9 +195,6 @@ class ProfilePageActivity : AppCompatActivity() {
     private fun loadFragment(itemId: Int) {
         val tag = itemId.toString()
         var fragment = supportFragmentManager.findFragmentByTag(tag) ?: when (itemId) {
-            R.id.home -> {
-                Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
-            }
             R.id.profile -> {
                 val intent = Intent(this, ProfilePageActivity::class.java)
                 startActivity(intent)
