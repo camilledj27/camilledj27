@@ -13,10 +13,10 @@
         android:id="@+id/date_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="155dp"
+        android:layout_marginLeft="145dp"
         android:layout_marginTop="100dp"
         android:text="Schedule an Event!"
-        android:textColor="@android:color/background_dark"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 
     <CalendarView
@@ -29,7 +29,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="500dp"
         android:backgroundTint="#C3BEBE"
         android:onClick="AddCalendarEvent"
         android:text="Add Calendar Event" />
@@ -38,10 +38,10 @@
         android:id="@+id/button_comment"
         android:layout_width="357dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="570dp"
         android:text="Pressing the button will launch the Google Calendar application on your phone"
-        android:textColor="@android:color/background_dark"
+        android:textColor="#FFFFFF"
          />
 
 </RelativeLayout>

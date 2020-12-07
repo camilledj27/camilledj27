@@ -6,28 +6,30 @@ import android.view.View
 import android.widget.CalendarView
 import android.widget.CalendarView.OnDateChangeListener
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 
 
 class CalendarActivity : AppCompatActivity() {
 
     var calender: CalendarView? = null
-    var date_view: TextView? = null
+    var date: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
 
         calender = findViewById<View>(R.id.calender) as CalendarView
-        date_view = findViewById<View>(R.id.date_view) as TextView
+        date = findViewById<View>(R.id.date_view) as TextView
 
         // Source: http://developer.android.com/training/improving-layouts/smooth-scrolling.html
         calender!!.setOnDateChangeListener(
             OnDateChangeListener { view, year, month, dayOfMonth ->
                 val m = month + 1;
-                val date = ( dayOfMonth.toString() + "-" + m + "-" + year)
-                date_view!!.text = date
+                val dateS = ( dayOfMonth.toString() + "-" + m + "-" + year)
+                date!!.text = dateS
             })
     }
 
@@ -61,6 +63,8 @@ class CalendarActivity : AppCompatActivity() {
                 Toast.makeText(getApplicationContext(), "Profile", Toast.LENGTH_SHORT).show();
             }
             R.id.calendar -> {
+                val intent = Intent(this, CalendarActivity::class.java)
+                startActivity(intent)
                 Toast.makeText(getApplicationContext(), "Calendar", Toast.LENGTH_SHORT).show();
             }
             R.id.diary -> {

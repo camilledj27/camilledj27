@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.feelingsdiary">
+    package="com.example.diaryactivity">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,12 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.feelingsdiary.LoginActivity" />
-        <activity android:name="com.example.feelingsdiary.RegistrationActivity" />
-        <activity android:name="com.example.feelingsdiary.ProfilePageActivity" />
-        <activity android:name="com.example.feelingsdiary.DashboardActivity" />
-        <activity android:name="com.example.feelingsdiary.DiaryActivity" />
-        <activity android:name="com.example.feelingsdiary.CalendarActivity"/>
     </application>
 
 </manifest>
