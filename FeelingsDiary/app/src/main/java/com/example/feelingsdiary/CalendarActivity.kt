@@ -29,8 +29,8 @@ class CalendarActivity : AppCompatActivity() {
         calender!!.setOnDateChangeListener(
             OnDateChangeListener { view, year, month, dayOfMonth ->
                 val m = month + 1;
-                val date = ( dayOfMonth.toString() + "-" + m + "-" + year)
-                date!!.text = date
+                val dateS = ( dayOfMonth.toString() + "-" + m + "-" + year)
+                date!!.text = dateS
             })
     }
 
