@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // Get access to FireBase
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase!!.reference.child("Users")
         mAuth = FirebaseAuth.getInstance()
@@ -48,6 +49,7 @@ class LoginActivity : AppCompatActivity(){
         val email: String = userEmail?.text.toString()
         val password: String = userPassword?.text.toString()
 
+        // Check user input
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(applicationContext, "Please enter email...", Toast.LENGTH_LONG).show()
             return
@@ -57,6 +59,7 @@ class LoginActivity : AppCompatActivity(){
             return
         }
 
+        //Source: Lab 7 - FireBase
         mAuth!!.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(
                 this
@@ -65,7 +68,7 @@ class LoginActivity : AppCompatActivity(){
                 if (task.isSuccessful) {
                     Toast.makeText(applicationContext, "Login successful!", Toast.LENGTH_LONG)
                         .show()
-                    val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
+                    val intent = Intent(this@LoginActivity, ProfilePageActivity::class.java)
                     //intent.putExtra(email, mDatabaseReference?.key)
                     intent.putExtra("user_email",userEmail?.text.toString())
                     startActivity(intent)

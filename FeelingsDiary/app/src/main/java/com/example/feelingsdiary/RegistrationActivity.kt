@@ -34,15 +34,14 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var mDatabase: FirebaseDatabase
 
     private val TAG = "CreateAccountActivity"
-    //global variables
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
-        //mAuth = FirebaseAuth.getInstance()
 
+        // Get all values
         emailTV = findViewById(R.id.email) as EditText
         passwordTV = findViewById(R.id.password) as EditText
         firstNameTV = findViewById(R.id.firstName) as EditText
@@ -51,6 +50,7 @@ class RegistrationActivity : AppCompatActivity() {
         regBtn = findViewById(R.id.register) as Button
         progressBar = findViewById(R.id.progressBar)
 
+        // Get access to Firebase
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase.getReference("Users")
         mDatabaseReference.setValue("test")
@@ -70,8 +70,8 @@ class RegistrationActivity : AppCompatActivity() {
          val firstName = firstNameTV!!.text.toString()
          val lastName = lastNameTV!!.text.toString()
          val bday = bdayTV!!.text.toString()
-         val user: User = User(firstName, lastName, bday, email, password)
 
+        // Check user input
         if (!TextUtils.isEmpty(firstName) && !TextUtils.isEmpty(lastName)
             && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)
             && !TextUtils.isEmpty(bday)) {
@@ -89,35 +89,22 @@ class RegistrationActivity : AppCompatActivity() {
             return
         }
 
-
+        // Source: Lab 7 - FireBase
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(applicationContext, "Registration successful!", Toast.LENGTH_LONG).show()
-                   // progressBar!!.visibility = View.GONE
                     Log.d(TAG, "createUserWithEmail:success")
-                    val userId = mAuth!!.currentUser!!.uid
-                    try {
-                        throw IllegalStateException()
-                        println("Hello World")
-                    } catch (exc: Throwable) {
-                        println("Something went wrong")
-                    }
-                    //Write verify email method
 
-                    //update user profile information
-                     //val currentUserDb = mDatabaseReference!!.child(userId)
+                    // Update user profile information
                     val id = mDatabaseReference.push().key
                     val currentUserDb = mDatabaseReference.child(id!!)
-                    Log.i(TAG, "test1")
-                    currentUserDb.child("firstName").push()
-                    Log.i(TAG, firstName)
-                    currentUserDb.child("firstName").setValue(firstName)
 
+                    currentUserDb.child("firstName").push()
+                    currentUserDb.child("firstName").setValue(firstName)
                     currentUserDb.child("lastName").setValue(lastName)
-                    Log.i(TAG, lastName)
                     currentUserDb.child("bday").setValue(bday)
-                    Log.i(TAG, bday)
+
 
                     val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
                     startActivity(intent)
@@ -127,14 +114,5 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             }
     }
-
-
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // if the user tapped the more information item, show the more info dialog
-        return super.onOptionsItemSelected(item);
-    }
-
 
 }

@@ -34,7 +34,7 @@ class DashboardActivity : AppCompatActivity(){
         graph.visibility = View.VISIBLE
 
 
-
+        //Source: https://codinginflow.com/tutorials/android/bottomnavigationview
         val bottomNav =
             findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
@@ -95,20 +95,14 @@ class DashboardActivity : AppCompatActivity(){
     private fun loadFragment(itemId: Int) {
         val tag = itemId.toString()
         var fragment = supportFragmentManager.findFragmentByTag(tag) ?: when (itemId) {
-            R.id.home -> {
-                Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
-            }
             R.id.profile -> {
                 val intent = Intent(this, ProfilePageActivity::class.java)
                 startActivity(intent)
                 Toast.makeText(getApplicationContext(), "Profile", Toast.LENGTH_SHORT).show();
             }
             R.id.calendar -> {
-<<<<<<< HEAD
+
                 val intent = Intent(this, CalendarActivity::class.java)
-=======
-                val intent = Intent(this, CalendarActivity::class.java )
->>>>>>> b6ea66a91c41a59b2da18e0469887547cd3d3143
                 startActivity(intent)
                 Toast.makeText(getApplicationContext(), "Calendar", Toast.LENGTH_SHORT).show();
             }
