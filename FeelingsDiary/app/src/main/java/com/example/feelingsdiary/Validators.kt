@@ -16,8 +16,7 @@ class Validators {
                 "\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)])")
         return emailRegex.matches(email)
     }
-
-    // TODO: Validate password
+    
     // Passwords should be at least 4 characters with 1 letter and 1 number
     fun validPassword(password: String?) : Boolean {
         var len = 0
