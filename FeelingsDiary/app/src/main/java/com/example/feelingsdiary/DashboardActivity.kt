@@ -39,18 +39,7 @@ class DashboardActivity : AppCompatActivity(){
             findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
-        val addEntry = findViewById<Button>(R.id.button)
-        val viewEntry = findViewById<Button>(R.id.button2)
-        val diaryEntry = findViewById<EditText>(R.id.entry)
-        addEntry.setOnClickListener(){
-            val intent = Intent(this, DiaryActivity::class.java)
-            intent.putExtra("entry",diaryEntry.text )
-            startActivity(intent)
-        }
-        viewEntry.setOnClickListener(){
-            val intent = Intent(this, DiaryActivity::class.java)
-            startActivity(intent)
-        }
+
 
         //Upload button
         button.setOnClickListener {
